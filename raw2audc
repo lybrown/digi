@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+sub convert {
+    my ($val) = @_;
+    $val = 0x87 if $val > 0x87;
+    $val = 0x78 if $val < 0x78;
+    $val -= 0x78;
+    return 0x10 + $val;
+}
+sub main {
+    my ($file) = @_;
+    open my $fh, $file or die "ERROR: Cannot open $file: $!\n";
+    read $fh, my $data, 9999999999;
+    my $src = quotemeta join "", map chr $_, 0 .. 255;
+    my $dst = quotemeta join "", map chr convert($_), 0 .. 255;
+    eval "\$data =~ tr/$src/$dst/";
+    print $data;
+}
+main($ARGV[0]);
