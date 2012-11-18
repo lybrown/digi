@@ -50,7 +50,7 @@ quiet
     ini init
 >>> my @s = stat "voyage.audc";
 >>> my $size = $s[7];
->>> my $max = 1000000;
+>>> my $max = 5000000;
 >>> $size = $max if $size > $max;
 >>> my $chunk = 0;
 >>> my $buflen = 0xC000 - 0x400;
