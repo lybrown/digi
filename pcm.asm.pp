@@ -15,7 +15,7 @@ init
     sta IRQEN
     sta NMIEN
     sta DMACTL
-    mva #1 GRAFP0
+    mva #$FF GRAFP0
     mva #15 COLPM0
     mva #$00 AUDCTL
     mva #$00 AUDC2
